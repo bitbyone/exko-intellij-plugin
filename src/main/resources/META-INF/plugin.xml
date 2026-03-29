@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>one.bitby.exko</id>
+    <name>Exko</name>
+    <version>1.8.0</version>
+    <vendor>bitby.one</vendor>
+
+    <description><![CDATA[
+    Extends IDE capabilities for EXKO (Extended Kotlin) related features.
+    <br>
+    Current features:
+    <ul>
+      <li><b>Exko Styled:</b> Support for writing CSS modules in Kotlin with automatic language injection and formatting.</li>
+    </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.css</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <multiHostInjector implementation="one.bitby.exko.styled.ExkoStyledInjector"/>
+        <formatting.injectedOptions implementation="one.bitby.exko.styled.ExkoStyledFormattingProvider"/>
+        <postFormatProcessor implementation="one.bitby.exko.styled.ExkoStyledPostFormatProcessor"/>
+        <lang.inspectionSuppressor language="kotlin" implementationClass="one.bitby.exko.styled.ExkoStyledInspectionSuppressor"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <supportsKotlinPluginMode supportsK2="true" supportsK1="true"/>
+    </extensions>
+</idea-plugin>
