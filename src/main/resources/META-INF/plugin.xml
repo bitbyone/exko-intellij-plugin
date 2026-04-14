@@ -10,18 +10,24 @@
     Current features:
     <ul>
       <li><b>Exko Styled:</b> Support for writing CSS modules in Kotlin with automatic language injection and formatting.</li>
+      <li><b>Exko Stimulus:</b> Support for writing Stimulus controllers in Kotlin with automatic JS injection and formatting.</li>
     </ul>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
     <depends>com.intellij.css</depends>
+    <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <multiHostInjector implementation="one.bitby.exko.styled.ExkoStyledInjector"/>
         <formatting.injectedOptions implementation="one.bitby.exko.styled.ExkoStyledFormattingProvider"/>
         <postFormatProcessor implementation="one.bitby.exko.styled.ExkoStyledPostFormatProcessor"/>
         <lang.inspectionSuppressor language="kotlin" implementationClass="one.bitby.exko.styled.ExkoStyledInspectionSuppressor"/>
+
+        <multiHostInjector implementation="one.bitby.exko.stimulus.ExkoStimulusInjector"/>
+        <formatting.injectedOptions implementation="one.bitby.exko.stimulus.ExkoStimulusFormattingProvider"/>
+        <postFormatProcessor implementation="one.bitby.exko.stimulus.ExkoStimulusPostFormatProcessor"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.jetbrains.kotlin">

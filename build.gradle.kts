@@ -18,6 +18,7 @@ dependencies {
     intellijPlatform {
         intellijIdeaUltimate("2024.3.1")
         bundledPlugin("com.intellij.css")
+        bundledPlugin("JavaScript")
         bundledPlugin("org.jetbrains.kotlin")
     }
 }
