@@ -1,7 +1,7 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "2.1.20"
-    id("org.jetbrains.intellij.platform") version "2.13.1"
+    id("org.jetbrains.kotlin.jvm") version "2.3.0"
+    id("org.jetbrains.intellij.platform") version "2.15.0"
 }
 
 group = "one.bitby"
@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate("2024.3.1")
+        intellijIdeaUltimate("2026.1.1")
         bundledPlugin("com.intellij.css")
         bundledPlugin("JavaScript")
         bundledPlugin("org.jetbrains.kotlin")
