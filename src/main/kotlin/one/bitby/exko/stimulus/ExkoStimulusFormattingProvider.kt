@@ -12,7 +12,7 @@ class ExkoStimulusFormattingProvider : InjectedFormattingOptionsProvider {
         if (file.language == jsLanguage
             && InjectedLanguageManager.getInstance(file.project).isInjectedFragment(file)
         ) {
-            return true
+            return false
         }
         return null
     }

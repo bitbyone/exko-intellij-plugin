@@ -12,7 +12,7 @@ class ExkoStyledFormattingProvider : InjectedFormattingOptionsProvider {
         if (file.language == cssLanguage
             && InjectedLanguageManager.getInstance(file.project).isInjectedFragment(file)
         ) {
-            return true
+            return false
         }
         return null
     }

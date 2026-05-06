@@ -40,23 +40,37 @@ class ExkoStyledInjector : MultiHostInjector {
         if (entries.isEmpty()) return null
 
         val places = mutableListOf<Place>()
+        var rangeStart = -1
+        var rangeEnd = -1
         var afterExpression = false
 
         for (entry in entries) {
             if (entry is KtLiteralStringTemplateEntry) {
-                val range = entry.textRangeInParent
-                if (range.isEmpty) continue
-
-                val prefix = buildString {
-                    if (places.isEmpty()) append(".x{")
-                    if (afterExpression) append("0")
+                val entryRange = entry.textRangeInParent
+                if (entryRange.isEmpty) continue
+                if (rangeStart < 0) {
+                    rangeStart = entryRange.startOffset
                 }
-
-                places.add(Place(prefix.ifEmpty { null }, null, range))
-                afterExpression = false
+                rangeEnd = entryRange.endOffset
             } else {
+                if (rangeStart >= 0) {
+                    val prefix = buildString {
+                        if (places.isEmpty()) append(".x{")
+                        if (afterExpression) append("0")
+                    }
+                    places.add(Place(prefix.ifEmpty { null }, null, TextRange(rangeStart, rangeEnd)))
+                    rangeStart = -1
+                }
                 afterExpression = true
             }
+        }
+
+        if (rangeStart >= 0) {
+            val prefix = buildString {
+                if (places.isEmpty()) append(".x{")
+                if (afterExpression) append("0")
+            }
+            places.add(Place(prefix.ifEmpty { null }, null, TextRange(rangeStart, rangeEnd)))
         }
 
         if (places.isEmpty()) return null
