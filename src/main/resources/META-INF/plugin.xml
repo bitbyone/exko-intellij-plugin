@@ -24,6 +24,7 @@
         <formatting.injectedOptions implementation="one.bitby.exko.styled.ExkoStyledFormattingProvider"/>
         <postFormatProcessor implementation="one.bitby.exko.styled.ExkoStyledPostFormatProcessor"/>
 <!--        <lang.inspectionSuppressor language="kotlin" implementationClass="one.bitby.exko.styled.ExkoStyledInspectionSuppressor"/>-->
+        <lang.inspectionSuppressor language="kotlin" implementationClass="one.bitby.exko.ui.ExkoUiNamingSuppressor"/>
 
         <multiHostInjector implementation="one.bitby.exko.stimulus.ExkoStimulusInjector"/>
         <formatting.injectedOptions implementation="one.bitby.exko.stimulus.ExkoStimulusFormattingProvider"/>
